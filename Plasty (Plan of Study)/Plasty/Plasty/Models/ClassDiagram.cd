@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Plasty.Models.CoursesAvail">
+    <Position X="1.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGgAAAAAAAAEAAAAAAAAACAAAgAAACQAQAAAAAAQA=</HashCode>
+      <FileName>Models\CoursesAvail.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CourseId" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Plasty.Models.Courses">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAiAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Models\Courses.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plasty.Models.DegreeRequirements">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAA=</HashCode>
+      <FileName>Models\DegreeRequirements.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plasty.Models.Majors">
+    <Position X="5.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Majors.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plasty.Models.Terms">
+    <Position X="5.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Models\Terms.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plasty.Models.CoursesTaken">
+    <Position X="5.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\CoursesTaken.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="System.Int32" Collapsed="true">
+    <Position X="2.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

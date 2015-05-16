@@ -8,6 +8,12 @@ namespace Plasty.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        public int MajorId { get; set; }
+
+        [Required]
+        public int TermId { get; set; }
     }
 
     public class ExternalLoginListViewModel
