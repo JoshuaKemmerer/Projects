@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Plasty.Models.Course">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAiAAAAAAgAAEAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Models\Course.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plasty.Models.CourseAvail">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGAAAAAAAAAAAAAIAAAAACAAAAAAACUAQAIIAAEQA=</HashCode>
+      <FileName>Models\CourseAvail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plasty.Models.CourseTaken">
+    <Position X="3.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGAAAIAAAAAACAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\CourseTaken.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plasty.Models.DegreeRequirement" Collapsed="true">
+    <Position X="10" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGAAAAAAAAAIIAAIAAAAAAAAAAAAAAEAAgAAAAAAA=</HashCode>
+      <FileName>Models\DegreeRequirement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plasty.Models.Enrollment" Collapsed="true">
+    <Position X="7.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAIAAAAAAAACAAAAAAAAEAAgAAAAAAA=</HashCode>
+      <FileName>Models\Enrollment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plasty.Models.Major" Collapsed="true">
+    <Position X="2" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAAAAAAAAAAAQAAAIAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Models\Major.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plasty.Models.Term" Collapsed="true">
+    <Position X="6.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAEAAAACAAAA=</HashCode>
+      <FileName>Models\Term.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plasty.Models.ApplicationUser">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAEAAAAAgAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\IdentityModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plasty.Models.ApplicationDbContext" Collapsed="true">
+    <Position X="2" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IdentityModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

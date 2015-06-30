@@ -1,0 +1,6 @@
+E:\Users\temp\Google Drive\Projects\Portfolio\Portfolio\bin\Portfolio.dll.config
+E:\Users\temp\Google Drive\Projects\Portfolio\Portfolio\bin\Portfolio.dll
+E:\Users\temp\Google Drive\Projects\Portfolio\Portfolio\bin\Portfolio.pdb
+E:\Users\temp\Google Drive\Projects\Portfolio\Portfolio\obj\Debug\Portfolio.csprojResolveAssemblyReference.cache
+E:\Users\temp\Google Drive\Projects\Portfolio\Portfolio\obj\Debug\Portfolio.dll
+E:\Users\temp\Google Drive\Projects\Portfolio\Portfolio\obj\Debug\Portfolio.pdb
