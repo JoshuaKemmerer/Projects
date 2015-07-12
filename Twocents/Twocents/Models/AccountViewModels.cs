@@ -70,8 +70,10 @@ namespace Twocents.Models
             this.RegistrationDate = DateTime.Now;
         }
 
+        // username must be between 4-32 characters, must start with letter or number, and can contain
+        // ._()- as long as they're not next to each other
         [Display(Name = "Username")]
-        [StringLength(50, ErrorMessage = "{0} must be at least {2} characters long.", MinimumLength = 4)]
+        [RegularExpression("^(?=.{4,32}$)([A-Za-z0-9][._()-]?)*$")]
         public string Username { get; set; }
 
         [Required]

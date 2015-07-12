@@ -12,7 +12,6 @@ namespace Twocents
 
         public int CommentId { get; set; }
 
-        [StringLength(1000)]
         public string Changes { get; set; }
 
         [StringLength(50)]

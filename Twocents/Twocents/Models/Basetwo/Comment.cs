@@ -24,7 +24,6 @@ namespace Twocents
         public int SourceId { get; set; }
 
         [Required]
-        [StringLength(8000)]
         public string Body { get; set; }
 
         public DateTime PostDate { get; set; }
