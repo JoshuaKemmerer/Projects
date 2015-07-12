@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Twocents.Models
@@ -64,6 +65,15 @@ namespace Twocents.Models
 
     public class RegisterViewModel
     {
+        public RegisterViewModel()
+        {
+            this.RegistrationDate = DateTime.Now;
+        }
+
+        [Display(Name = "Username")]
+        [StringLength(50, ErrorMessage = "{0} must be at least {2} characters long.", MinimumLength = 4)]
+        public string Username { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -79,6 +89,11 @@ namespace Twocents.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [DataType(DataType.DateTime)]
+        [Display(Name = "Registration Date")]
+        public DateTime RegistrationDate { get; set; }
     }
 
     public class ResetPasswordViewModel

@@ -156,13 +156,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccessTypesController.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Basetwo\AccessType.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Models\Basetwo\BasetwoDataModel.cs" />
+    <Compile Include="Models\Basetwo\BaseTwoDataContext.cs" />
     <Compile Include="Models\Basetwo\Comment.cs" />
     <Compile Include="Models\Basetwo\CommentFlag.cs" />
     <Compile Include="Models\Basetwo\CommentRating.cs" />
@@ -243,14 +244,15 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\AccessTypes\Create.cshtml" />
-    <Content Include="Views\AccessTypes\Delete.cshtml" />
-    <Content Include="Views\AccessTypes\Details.cshtml" />
-    <Content Include="Views\AccessTypes\Edit.cshtml" />
-    <Content Include="Views\AccessTypes\Index.cshtml" />
+    <Content Include="Views\Admin\AccessTypes\Create.cshtml" />
+    <Content Include="Views\Admin\AccessTypes\Delete.cshtml" />
+    <Content Include="Views\Admin\AccessTypes\Details.cshtml" />
+    <Content Include="Views\Admin\AccessTypes\Edit.cshtml" />
+    <Content Include="Views\Admin\AccessTypes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Admin\Roles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

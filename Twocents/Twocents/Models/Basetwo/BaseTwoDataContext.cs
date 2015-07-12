@@ -5,10 +5,10 @@ namespace Twocents
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class BasetwoDataModel : DbContext
+    public partial class BasetwoDataContext : DbContext
     {
-        public BasetwoDataModel()
-            : base("name=BasetwoDataModel")
+        public BasetwoDataContext()
+            : base("name=BasetwoDataContext")
         {
         }
 

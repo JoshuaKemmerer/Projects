@@ -13,7 +13,7 @@ namespace Twocents.Models
     [Authorize]
     public class AccessTypesController : Controller
     {
-        private BasetwoDataModel db = new BasetwoDataModel();
+        private BasetwoDataContext db = new BasetwoDataContext();
 
         // GET: AccessTypes
         public ActionResult Index()
