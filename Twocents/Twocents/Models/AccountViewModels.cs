@@ -73,7 +73,8 @@ namespace Twocents.Models
         // username must be between 4-32 characters, must start with letter or number, and can contain
         // ._()- as long as they're not next to each other
         [Display(Name = "Username")]
-        [RegularExpression("^(?=.{4,32}$)([A-Za-z0-9][._()-]?)*$")]
+        [RegularExpression(@"^(?=.{4,32}$)([A-Za-z0-9][\s._()-]?)*$",
+            ErrorMessage="Username must be between 4-32 characters, start with an alphanumeric character, and may only contain letters, numbers, spaces, periods, hypens, parentheses, or underlines.")]
         public string Username { get; set; }
 
         [Required]
