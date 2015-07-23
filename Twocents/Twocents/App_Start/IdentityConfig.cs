@@ -32,14 +32,16 @@ namespace Twocents
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {
-        public ApplicationUserManager(IUserStore<ApplicationUser> store)
+        public ApplicationUserManager(IUserStore<ApplicationUser, string> store)
             : base(store)
         {
         }
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
         {
-            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
+            var manager = new ApplicationUserManager(new UserStore<ApplicationUser, 
+                ApplicationRole, string, ApplicationUserLogin, ApplicationUserRole, 
+                ApplicationUserClaim>(context.Get<ApplicationDbContext>()));
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<ApplicationUser>(manager)
             {
@@ -108,39 +110,56 @@ namespace Twocents
     {
         protected override void Seed(ApplicationDbContext context)
         {
-            //InitializeIdentityForEF(context);
+            InitializeIdentityForEF(context);
             base.Seed(context);
         }
 
-    //    private void InitializeIdentityForEF(ApplicationDbContext context)
-    //    {
-    //        var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-    //        var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-    //        string name = "Admin";
-    //        string password = "Password2!";
-    //        string test = "test";
+        //Create User=Admin@Admin.com with password=Password2! in the Admin role        
+        public static void InitializeIdentityForEF(ApplicationDbContext db)
+        {
+            var userManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var roleManager = HttpContext.Current.GetOwinContext().Get<ApplicationRoleManager>();
+            const string name = "admin@example.com";
+            const string password = "Password2!";
+            const string roleName = "Admin";
 
-    //        //Create Role Test and User Test
-    //        RoleManager.Create(new IdentityRole(test));
-    //        UserManager.Create(new ApplicationUser() { UserName = test });
+            //Create Role Admin if it does not exist
+            var role = roleManager.FindByName(roleName);
+            if (role == null)
+            {
+                role = new ApplicationRole(roleName);
+                var roleresult = roleManager.Create(role);
+            }
 
-    //        //Create Role Admin if it does not exist
-    //        if (!RoleManager.RoleExists(name))
-    //        {
-    //            RoleManager.Create(new IdentityRole(name));
-    //        }
+            var user = userManager.FindByName(name);
+            if (user == null)
+            {
+                user = new ApplicationUser { UserName = name, Email = name };
+                var result = userManager.Create(user, password);
+                result = userManager.SetLockoutEnabled(user.Id, false);
+            }
 
-    //        //Create User=Admin with password=123456
-    //        var user = new ApplicationUser();
-    //        user.UserName = name;
-    //        var adminresult = UserManager.Create(user, password);
+            // Add user admin to Role Admin if not already added
+            var rolesForUser = userManager.GetRoles(user.Id);
+            if (!rolesForUser.Contains(role.Name))
+            {
+                var result = userManager.AddToRole(user.Id, role.Name);
+            }
+        }
 
-    //        //Add User Admin to Role Admin
-    //        if (adminresult.Succeeded)
-    //        {
-    //            var result = UserManager.AddToRole(user.Id, name);
-    //        }
-    //    }
+    }
 
+    // Configure the RoleManager used in the application. RoleManager is defined in the ASP.NET Identity core assembly
+    public class ApplicationRoleManager : RoleManager<ApplicationRole>
+    {
+        public ApplicationRoleManager(IRoleStore<ApplicationRole, string> roleStore)
+            : base(roleStore)
+        {
+        }
+
+        public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options, IOwinContext context)
+        {
+            return new ApplicationRoleManager(new ApplicationRoleStore(context.Get<ApplicationDbContext>()));
+        }
     }
 }

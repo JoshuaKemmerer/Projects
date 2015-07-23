@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Twocents.Models;
+using System.Collections.Generic;
 
 namespace Twocents.Controllers
 {
@@ -23,6 +24,21 @@ namespace Twocents.Controllers
         {
             UserManager = userManager;
             SignInManager = signInManager;
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult Index()
+        {
+            var Db = new ApplicationDbContext();
+            var users = Db.Users;
+            var model = new List<EditUserViewModel>();
+            foreach(var user in users)
+            {
+                var u = new EditUserViewModel(user);
+                model.Add(u);
+            }
+
+            return View(model);
         }
 
         public ApplicationSignInManager SignInManager
