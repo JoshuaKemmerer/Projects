@@ -15,9 +15,10 @@ namespace Twocents.Models
     public class ApplicationUserClaim : IdentityUserClaim<string> { }
     public class ApplicationUserRole : IdentityUserRole<string> { }
 
-
-    // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
-    public class ApplicationUser : IdentityUser
+    // Must be expressed in terms of our custom Role and other types:
+    public class ApplicationUser 
+        : IdentityUser<string, ApplicationUserLogin, 
+        ApplicationUserRole, ApplicationUserClaim>
     {
 
         [Required]
@@ -30,14 +31,16 @@ namespace Twocents.Models
         public ApplicationUser()
         {
             this.Id = Guid.NewGuid().ToString();
+
             // Add any custom User properties/code here
         }
 
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
+
+        public async Task<ClaimsIdentity>
+            GenerateUserIdentityAsync(ApplicationUserManager manager)
         {
-            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
-            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
-            // Add custom user claims here
+            var userIdentity = await manager
+                .CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             return userIdentity;
         }
     }
@@ -46,7 +49,7 @@ namespace Twocents.Models
     // Must be expressed in terms of our custom UserRole:
     public class ApplicationRole : IdentityRole<string, ApplicationUserRole>
     {
-        public ApplicationRole()
+        public ApplicationRole() 
         {
             this.Id = Guid.NewGuid().ToString();
         }
@@ -62,10 +65,12 @@ namespace Twocents.Models
 
 
     // Must be expressed in terms of our custom types:
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string, ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>
+    public class ApplicationDbContext 
+        : IdentityDbContext<ApplicationUser, ApplicationRole, 
+        string, ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DefaultConnection")
         {
         }
 
@@ -79,17 +84,16 @@ namespace Twocents.Models
             return new ApplicationDbContext();
         }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-        }
+        // Add additional items here as needed
     }
 
     // Most likely won't need to customize these either, but they were needed because we implemented
     // custom versions of all the other types:
-    public class ApplicationUserStore : UserStore<ApplicationUser,
-        ApplicationRole, string, ApplicationUserLogin, ApplicationUserRole,
-        ApplicationUserClaim>, IUserStore<ApplicationUser, string>, IDisposable
+    public class ApplicationUserStore 
+        :UserStore<ApplicationUser, ApplicationRole, string,
+            ApplicationUserLogin, ApplicationUserRole, 
+            ApplicationUserClaim>, IUserStore<ApplicationUser, string>, 
+        IDisposable
     {
         public ApplicationUserStore()
             : this(new IdentityDbContext())

@@ -7,6 +7,7 @@ using System;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Web;
 using Twocents.Models;
 
 namespace Twocents
@@ -30,7 +31,7 @@ namespace Twocents
     }
 
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
-    public class ApplicationUserManager : UserManager<ApplicationUser>
+    public class ApplicationUserManager : UserManager<ApplicationUser, string>
     {
         public ApplicationUserManager(IUserStore<ApplicationUser, string> store)
             : base(store)
@@ -117,10 +118,14 @@ namespace Twocents
         //Create User=Admin@Admin.com with password=Password2! in the Admin role        
         public static void InitializeIdentityForEF(ApplicationDbContext db)
         {
-            var userManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            var roleManager = HttpContext.Current.GetOwinContext().Get<ApplicationRoleManager>();
-            const string name = "admin@example.com";
-            const string password = "Password2!";
+            var userStore = new UserStore<ApplicationUser,
+                ApplicationRole, string, ApplicationUserLogin, ApplicationUserRole,
+                ApplicationUserClaim>(db);
+            var userManager = new ApplicationUserManager(userStore);
+            var roleManager = new ApplicationRoleManager(new ApplicationRoleStore(db));
+            const string name = "Administrator";
+            const string email = "joshkemm@gmail.com";
+            const string password = "Admin@1234";
             const string roleName = "Admin";
 
             //Create Role Admin if it does not exist
@@ -134,7 +139,7 @@ namespace Twocents
             var user = userManager.FindByName(name);
             if (user == null)
             {
-                user = new ApplicationUser { UserName = name, Email = name };
+                user = new ApplicationUser { UserName = name, Email = email, RegistrationDate = DateTime.Now };
                 var result = userManager.Create(user, password);
                 result = userManager.SetLockoutEnabled(user.Id, false);
             }

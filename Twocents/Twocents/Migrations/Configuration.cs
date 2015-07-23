@@ -29,8 +29,9 @@ namespace Twocents.Migrations
             //    );
             //
 
-            var manager = new UserManager<ApplicationUser>(
-                new UserStore<ApplicationUser>(
+            var manager = new UserManager<ApplicationUser, string>(
+                new UserStore<ApplicationUser, ApplicationRole, string, ApplicationUserLogin, ApplicationUserRole,
+                ApplicationUserClaim>(
                     new ApplicationDbContext()));
 
             var user = new ApplicationUser() { UserName = "joshkemm", Email = "joshkemm@gmail.com", RegistrationDate = DateTime.Now };
