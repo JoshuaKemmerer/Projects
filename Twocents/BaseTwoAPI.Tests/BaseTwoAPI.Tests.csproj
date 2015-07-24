@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{E07B2DB2-3A39-4E8B-BE09-4C101B93F91F}</ProjectGuid>
+    <ProjectGuid>{BD5067EA-7973-4B5C-90A1-1BF48177920F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BaseTwoAPI.Tests</RootNamespace>
@@ -103,7 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BaseTwoAPI\BaseTwoAPI.csproj">
-      <Project>{4F2E5875-F6A3-4451-A26C-FDBDC7F8923B}</Project>
+      <Project>{05D6E288-9846-43D8-A48D-B2B290723584}</Project>
       <Name>BaseTwoAPI</Name>
     </ProjectReference>
   </ItemGroup>
